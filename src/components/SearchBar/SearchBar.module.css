@@ -1,0 +1,42 @@
+.header {
+	width: 100%;
+	padding: 10px;
+	display: flex;
+	justify-content: center;
+	background-color: #1976d2;
+}
+.form {
+	position: relative;
+	width: 375px;
+}
+
+@media screen and (min-width: 768px) {
+	.form {
+		width: 500px;
+	}
+}
+
+.input {
+	padding: 10px 10px 10px 40px;
+	width: 100%;
+	border: 1px solid transparent;
+	border-radius: 3px;
+	outline: none;
+}
+
+.button {
+	position: absolute;
+	top: 10px;
+	left: 10px;
+	background-color: transparent;
+	color: gray;
+}
+
+.button:hover,
+.button:focus {
+	color: #77b4f1;
+}
+
+.button:active {
+	color: #1976d2;
+}
