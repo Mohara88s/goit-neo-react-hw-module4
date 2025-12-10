@@ -9,11 +9,12 @@ const customStyles = {
 		bottom: "auto",
 		marginRight: "-50%",
 		transform: "translate(-50%, -50%)",
-		with: "80%",
+		width: "80%",
 		height: "80%",
 	},
 	overlay: {
-		backgroundColor: "rgba(0, 0, 0, 0.75)", // темний бекдроп
+		backgroundColor: "rgba(0, 0, 0, 0.75)",
+		zIndex: 100,
 	},
 };
 
@@ -22,7 +23,6 @@ export default function ImageModal({ isOpen, onClose, modalItem }) {
 		urls: { regular },
 		alt_description,
 	} = modalItem;
-	console.log(modalItem);
 	return (
 		<Modal isOpen={isOpen} onRequestClose={onClose} style={customStyles}>
 			<img src={regular} alt={alt_description} className={style.modal_img} />

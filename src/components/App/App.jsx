@@ -33,6 +33,7 @@ export default function App() {
 			setTotalPages(data.total_pages);
 		} catch (error) {
 			toast.error(error.message);
+			setTotalPages(0);
 		} finally {
 			setLoading(false);
 		}
@@ -52,15 +53,16 @@ export default function App() {
 	};
 
 	function openModal(id) {
-		const image = galleryList.find((item) => item.id === id);
-		if (image) {
-			setModalItem(image);
+		const objItem = galleryList.find((item) => item.id === id);
+		if (objItem) {
+			setModalItem(objItem);
 			setIsOpen(true);
 		}
 	}
 
 	function closeModal() {
 		setIsOpen(false);
+		setModalItem({});
 	}
 
 	return (
@@ -71,7 +73,7 @@ export default function App() {
 					{galleryList.length > 0 && (
 						<ImageGallery galleryList={galleryList} onImageClick={openModal} />
 					)}
-					{page < totalPages && (
+					{page < totalPages && !loading && (
 						<LoadMoreBtn loadMoreBtnClick={loadMoreBtnClick} />
 					)}
 					<div className={style.loader_box}>
@@ -91,6 +93,7 @@ export default function App() {
 					isOpen={modalIsOpen}
 					onClose={closeModal}
 					modalItem={modalItem}
+					key={modalItem.id}
 				/>
 			)}
 		</>
