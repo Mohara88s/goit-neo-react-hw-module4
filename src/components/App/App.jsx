@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Section from "../Section/Section";
 import Container from "../Container/Container";
 import SearchBar from "../SearchBar/SearchBar";
@@ -64,6 +64,18 @@ export default function App() {
 		setIsOpen(false);
 		setModalItem({});
 	}
+
+	useEffect(() => {
+		if (modalIsOpen) {
+			document.body.style.overflow = "hidden";
+		} else {
+			document.body.style.overflow = "";
+		}
+
+		return () => {
+			document.body.style.overflow = "";
+		};
+	}, [modalIsOpen]);
 
 	return (
 		<>

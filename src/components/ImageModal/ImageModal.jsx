@@ -9,12 +9,25 @@ const customStyles = {
 		bottom: "auto",
 		marginRight: "-50%",
 		transform: "translate(-50%, -50%)",
-		width: "80%",
-		height: "80%",
+		width: "auto",
+		height: "auto",
+		maxWidth: "90%",
+		maxHeight: "90%",
+		overflow: "hidden",
+		padding: "0",
+		border: "none",
+		outline: "none",
+		boxShadow: "none",
+		background: "transparent",
+		caretColor: "transparent",
+		display: "flex",
+		justifyContent: "center",
+		alignItems: "center",
 	},
 	overlay: {
 		backgroundColor: "rgba(0, 0, 0, 0.75)",
 		zIndex: 100,
+		overflow: "hidden",
 	},
 };
 
@@ -24,8 +37,18 @@ export default function ImageModal({ isOpen, onClose, modalItem }) {
 		alt_description,
 	} = modalItem;
 	return (
-		<Modal isOpen={isOpen} onRequestClose={onClose} style={customStyles}>
-			<img src={regular} alt={alt_description} className={style.modal_img} />
+		<Modal
+			isOpen={isOpen}
+			onRequestClose={onClose}
+			style={customStyles}
+			focusAfterRender={false}
+		>
+			<img
+				src={regular}
+				alt={alt_description}
+				className={style.modal_img}
+				tabIndex="-1"
+			/>
 		</Modal>
 	);
 }
